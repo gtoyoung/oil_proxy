@@ -18,7 +18,7 @@ app.use(express.json({ extended: true }));
 app.get("/getTop20", function (req, res) {
   const areaCd = req.param("area");
   const oliType = req.param("oilType");
-  const url = `https://www.opinet.co.kr/api/lowTop10.do?out=json&code=${OIL_CODE}&prodcd=${oliType}&area=${areaCd}&cnt=20`;
+  const url = `https://www.opinet.co.kr/api/lowTop10.do?out=json&code=${OIL_CODE}&prodcd=${oliType}&area=${areaCd}&cnt=10`;
 
   request(url, function (error, response, body) {
     res.send(body);

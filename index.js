@@ -32,7 +32,11 @@ app.get("/getTop20", function (req, res) {
 app.get("/createOilInfo", async function (req, res) {
   try {
     const message = req.param("message");
-    const prompt = `정보 : ${message} \n\n [위의 정보를 토대로 가장 효율적인 주유소를 추천해주는데 잡다한 설명은 필요없고 그냥 1위부터 3위까지 간단히 도식화하듯이 표현해줘]`;
+    const prompt = `주유소 정보는 ${message}입니다.\n\n`;
+    prompt += '위의 주유소 가격과 거리 정보를 통해서 가장 기름넣으러가기 적절한 주유소를 추천해줘.\n\n';
+    prompt += '답변 형태는 아래와 같이 답변해줘.\n\n';
+    prompt += '1. 주유소 이름\n2. 가격 정보\n3. 거리 정보\n';
+
     // Set headers for SSE
     res.setHeader('Content-Type', 'text/event-stream');
     res.setHeader('Cache-Control', 'no-cache');
